@@ -1,35 +1,35 @@
 /* ===================================================
    스탁뷰 챌린지 (Stock View Challenge)
-   - 배경, 궤도, 캐릭터, 로고 공 애니메이션
+   - 배경, 궤도(훌라후프), 캐릭터, 로고 공 애니메이션
    =================================================== */
 
 /* ------- 키프레임 정의 ------- */
 
-/* 둥둥 뜨는 효과 (위아래 반복) */
+/* 둥둥 뜨는 효과 */
 @keyframes sv-float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-18px); }
 }
 
-/* 캐릭터 전용 둥둥 (좀 더 큰 움직임) */
+/* 캐릭터 전용 둥둥 (중앙 고정 유지) */
 @keyframes sv-float-character {
   0%, 100% { transform: translate(-50%, -50%) translateY(0); }
   50% { transform: translate(-50%, -50%) translateY(-22px); }
 }
 
-/* 궤도 회전 */
-@keyframes sv-orbit-spin {
-  0% { transform: translate(-50%, -50%) rotateX(65deg) rotateZ(0deg); }
-  100% { transform: translate(-50%, -50%) rotateX(65deg) rotateZ(360deg); }
+/* 궤도 띠: 제자리에서 은은하게 빛나는 효과 */
+@keyframes sv-orbit-pulse {
+  0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 8px rgba(255,255,255,0.3)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)); }
 }
 
-/* 별 반짝이 효과 */
+/* 별 반짝이 */
 @keyframes sv-twinkle {
   0%, 100% { opacity: 0.2; transform: scale(0.8); }
   50% { opacity: 1; transform: scale(1.2); }
 }
 
-/* 배경 구체 서서히 떠다니기 */
+/* 배경 구체 떠다니기 */
 @keyframes sv-drift {
   0%, 100% { transform: translateY(0) translateX(0); }
   25% { transform: translateY(-10px) translateX(5px); }
@@ -58,36 +58,14 @@
   opacity: 0.5;
   animation: sv-drift 8s ease-in-out infinite;
 }
-.sv-bg-sphere--1 {
-  width: 120px; height: 120px;
-  top: 5%; left: -30px;
-  animation-delay: 0s;
-}
-.sv-bg-sphere--2 {
-  width: 80px; height: 80px;
-  top: 12%; right: 8%;
-  opacity: 0.3;
-  animation-delay: 2s;
-}
-.sv-bg-sphere--3 {
-  width: 140px; height: 140px;
-  bottom: 10%; right: -40px;
-  animation-delay: 4s;
-}
-.sv-bg-sphere--4 {
-  width: 60px; height: 60px;
-  bottom: 25%; left: 5%;
-  opacity: 0.25;
-  animation-delay: 6s;
-}
+.sv-bg-sphere--1 { width: 120px; height: 120px; top: 5%; left: -30px; animation-delay: 0s; }
+.sv-bg-sphere--2 { width: 80px; height: 80px; top: 12%; right: 8%; opacity: 0.3; animation-delay: 2s; }
+.sv-bg-sphere--3 { width: 140px; height: 140px; bottom: 10%; right: -40px; animation-delay: 4s; }
+.sv-bg-sphere--4 { width: 60px; height: 60px; bottom: 25%; left: 5%; opacity: 0.25; animation-delay: 6s; }
 
 
 /* ------- 별/반짝이 ------- */
-.sv-stars {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
+.sv-stars { position: absolute; inset: 0; pointer-events: none; }
 .sv-star {
   position: absolute;
   width: 4px; height: 4px;
@@ -113,7 +91,12 @@
 }
 
 
-/* ------- 회전 궤도 띠 ------- */
+/* =============================================
+   궤도 훌라후프 (Back / Front 2레이어)
+   - 뒷면(back): 토끼 뒤쪽으로 지나감
+   - 앞면(front): 토끼 앞쪽 하단으로 지나감
+   - 두 레이어가 동기화되어 하나의 띠처럼 보임
+   ============================================= */
 .sv-orbit {
   position: absolute;
   top: 50%;
@@ -121,165 +104,148 @@
   width: 340px;
   height: 340px;
   transform: translate(-50%, -50%);
-  z-index: 2;
   pointer-events: none;
 }
+
+/* 기울기 없이 원형 그대로 유지 */
+.sv-orbit__tilt {
+  width: 100%;
+  height: 100%;
+}
+
+/* 이미지는 제자리 고정, 은은한 빛남 효과만 적용 */
 .sv-orbit__ring {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  border: 2.5px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1);
-  animation: sv-orbit-spin 8s linear infinite;
-  transform-style: preserve-3d;
+  object-fit: contain;
+  animation: sv-orbit-pulse 3s ease-in-out infinite;
+}
+
+/* 뒷면: 토끼 뒤에서 돌아감 (z-index 낮음) */
+.sv-orbit--back {
+  z-index: 2;
+   transform: translate(-50%, -50%);
+  animation: hoopSway 1.8s ease-in-out infinite;
+}
+
+/* 앞면: 토끼 앞 하단으로 보임 (z-index 높음 + 상단 반 가림) */
+.sv-orbit--front {
+  z-index: 5;
+  clip-path: inset(50% 0 0 0);
+  /* left: 50%;
+  top: 78%;
+  width: 220px; */
+  transform: translate(-50%, -50%);
+  animation: hoopSway 1.8s ease-in-out infinite;
+}
+
+@keyframes hoopSway {
+  0% {
+    transform: translate(-50%, -50%) rotate(-2deg);
+  }
+
+  25% {
+    transform: translate(calc(-50% + 3px), calc(-50% - 2px)) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-50%, calc(-50% + 2px)) rotate(2deg);
+  }
+
+  75% {
+    transform: translate(calc(-50% - 3px), calc(-50% - 1px)) rotate(-1deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(-2deg);
+  }
 }
 
 
-/* ------- 중앙 캐릭터 ------- */
+/* ------- 중앙 토끼 캐릭터 ------- */
 .sv-character {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
-  animation: sv-float-character 3s ease-in-out infinite;
+  /* animation: sv-float-character 3s ease-in-out infinite; */
 }
-
-/* 캐릭터 플레이스홀더 (실제 이미지 교체 전 미리보기용) */
-.sv-character__placeholder {
-  position: relative;
-  width: 120px;
-  height: 180px;
-}
-.sv-character__body {
-  width: 110px;
-  height: 140px;
-  background: radial-gradient(ellipse at center, #fff 60%, #f0f0f0 100%);
-  border-radius: 50px 50px 40px 40px;
-  margin: 0 auto;
-  position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-.sv-character__ear {
-  position: absolute;
-  width: 28px;
-  height: 55px;
-  background: #fff;
-  border-radius: 14px 14px 10px 10px;
-  top: -40px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-.sv-character__ear::after {
-  content: '';
-  position: absolute;
-  width: 14px;
-  height: 35px;
-  background: #ffc5b3;
-  border-radius: 7px;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.sv-character__ear--left { left: 20px; transform: rotate(-8deg); }
-.sv-character__ear--right { right: 20px; transform: rotate(8deg); }
-
-.sv-character__face {
-  position: absolute;
-  top: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 60px;
-}
-.sv-character__binocular {
-  display: flex;
-  gap: 4px;
-  justify-content: center;
-  margin-top: 5px;
-}
-.sv-character__lens {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 40% 40%, #555, #222);
-  border: 3px solid #f0c040;
-  box-shadow: 0 0 6px rgba(0,0,0,0.2);
-}
-.sv-character__eye {
-  display: none; /* 쌍안경에 가려짐 */
+.sv-character__img {
+  display: block;
+  width: 180px;
+  height: auto;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
 }
 
 
 /* ------- 떠다니는 로고 공 ------- */
 .sv-ball {
   position: absolute;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 4;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2), inset 0 -4px 8px rgba(0,0,0,0.15);
   animation: sv-float 3s ease-in-out infinite;
 }
-.sv-ball__logo {
-  font-weight: 900;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+.sv-ball__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
 }
 
 /* Tesla - 좌측 아래 */
 .sv-ball--tesla {
-  width: 80px; height: 80px;
-  background: radial-gradient(circle at 35% 35%, #ff4444, #cc0000);
+  width: 90px; height: 90px;
   top: 52%; left: 2%;
   animation-delay: 0s;
   animation-duration: 3.2s;
 }
-.sv-ball--tesla .sv-ball__logo {
-  font-size: 28px; color: #fff;
-  font-family: Arial, sans-serif;
-}
 
 /* Amazon - 좌측 위 */
 .sv-ball--amazon {
-  width: 60px; height: 60px;
-  background: radial-gradient(circle at 35% 35%, #555, #222);
-  top: 22%; left: 18%;
+  width: 70px; height: 70px;
+  top: 20%; left: 15%;
   animation-delay: 0.6s;
   animation-duration: 2.8s;
-}
-.sv-ball--amazon .sv-ball__logo {
-  font-size: 24px; color: #ff9900;
-  font-style: italic;
-  font-family: Georgia, serif;
 }
 
 /* Google - 우측 아래 */
 .sv-ball--google {
-  width: 70px; height: 70px;
-  background: radial-gradient(circle at 35% 35%, #fff, #e8e8e8);
+  width: 80px; height: 80px;
   top: 62%; right: 5%;
   animation-delay: 1.2s;
   animation-duration: 3.5s;
 }
-.sv-ball--google .sv-ball__logo {
-  font-size: 26px;
-  font-weight: 900;
-  background: linear-gradient(135deg, #4285f4, #ea4335, #fbbc05, #34a853);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-family: Arial, sans-serif;
+
+
+/* ****************** */
+
+
+/* .rabbit-wrap {
+  position: relative;
+  width: 300px;
+  height: 300px;
 }
 
-/* KB - 우측 위 */
-.sv-ball--kb {
-  width: 50px; height: 50px;
-  background: radial-gradient(circle at 35% 35%, #a89060, #7a6840);
-  top: 30%; right: 12%;
-  animation-delay: 1.8s;
-  animation-duration: 3s;
+.rabbit {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  width: 150px;
+  transform: translateX(-50%);
 }
-.sv-ball--kb .sv-ball__logo {
-  font-size: 14px; color: #f0e0b0;
-  font-family: Arial, sans-serif;
+
+.hoop {
+  position: absolute;
+  left: 50%;
+  top: 78%;
+  width: 220px;
+  transform: translate(-50%, -50%);
+  animation: hoopSway 1.8s ease-in-out infinite;
 }
+
+.hoop img {
+  display: block;
+  width: 100%;
+} */
+

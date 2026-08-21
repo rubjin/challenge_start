@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>스탁뷰 챌린지</title>
-  <link rel="stylesheet" href="../../css/main.css">
-  <link rel="stylesheet" href="../../css/stock-view.css">
+  <link rel="stylesheet" href="../../css/main.css" />
+  <link rel="stylesheet" href="../../css/stock-view.css" />
 </head>
 <body>
   <div class="sv-wrapper">
@@ -16,7 +16,7 @@
     <div class="sv-bg-sphere sv-bg-sphere--4"></div>
 
     <!-- 배경 별/반짝이 효과 -->
-    <div class="sv-stars">
+    <!-- <div class="sv-stars">
       <div class="sv-star sv-star--1"></div>
       <div class="sv-star sv-star--2"></div>
       <div class="sv-star sv-star--3"></div>
@@ -25,50 +25,53 @@
       <div class="sv-star sv-star--6"></div>
       <div class="sv-star sv-star--7"></div>
       <div class="sv-star sv-star--8"></div>
-    </div>
+    </div> -->
 
     <!-- 메인 콘텐츠 영역 -->
     <div class="sv-scene">
 
-      <!-- 회전하는 원형 궤도 띠 -->
-      <div class="sv-orbit">
-        <div class="sv-orbit__ring"></div>
+      <!-- 회전하는 원형 궤도 띠 (뒷면: 토끼 뒤쪽) -->
+      <div class="sv-orbit sv-orbit--back">
+        <div class="sv-orbit__tilt">
+          <img src="../../images/cirlcle.png" alt="" class="sv-orbit__ring" />
+        </div>
       </div>
 
       <!-- 중앙 토끼 캐릭터 -->
       <div class="sv-character">
-        <!-- 실제 이미지로 교체: <img src="../../images/stock-view/rabbit.png" alt="스탁뷰 토끼" /> -->
-        <div class="sv-character__placeholder">
-          <div class="sv-character__ear sv-character__ear--left"></div>
-          <div class="sv-character__ear sv-character__ear--right"></div>
-          <div class="sv-character__body">
-            <div class="sv-character__face">
-              <div class="sv-character__eye sv-character__eye--left"></div>
-              <div class="sv-character__eye sv-character__eye--right"></div>
-              <div class="sv-character__binocular">
-                <div class="sv-character__lens sv-character__lens--left"></div>
-                <div class="sv-character__lens sv-character__lens--right"></div>
-              </div>
-            </div>
-          </div>
+        <img src="../../images/rabbit.png" alt="스탁뷰 토끼" class="sv-character__img" />
+      </div>
+
+      <!-- 회전하는 원형 궤도 띠 (앞면: 토끼 앞쪽, 하단만 노출) -->
+      <div class="sv-orbit sv-orbit--front">
+        <div class="sv-orbit__tilt">
+          <img src="../../images/cirlcle.png" alt="" class="sv-orbit__ring" />
         </div>
       </div>
 
       <!-- 떠다니는 기업 로고 공들 -->
       <div class="sv-ball sv-ball--tesla" data-company="Tesla">
-        <span class="sv-ball__logo">T</span>
+        <img src="../../images/ball_tsla.png" alt="Tesla" class="sv-ball__img" />
       </div>
       <div class="sv-ball sv-ball--amazon" data-company="Amazon">
-        <span class="sv-ball__logo">a</span>
+        <img src="../../images/ball_amazon.png" alt="Amazon" class="sv-ball__img" />
       </div>
       <div class="sv-ball sv-ball--google" data-company="Google">
-        <span class="sv-ball__logo">G</span>
-      </div>
-      <div class="sv-ball sv-ball--kb" data-company="KB">
-        <span class="sv-ball__logo">KB</span>
+        <img src="../../images/ball_google.png" alt="Google" class="sv-ball__img" />
       </div>
 
+
     </div>
+
+
+          <!-- ////////////////////////// -->
+<!-- <div class="rabbit-wrap">
+  <img class="rabbit" src="../../images/rabbit.png" alt="토끼">
+
+  <div class="hoop">
+    <img src="../../images/cirlcle.png" alt="">
+  </div>
+</div> -->
   </div>
 </body>
 </html>
