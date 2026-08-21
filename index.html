@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>퍼블리싱 화면 목록 (Worksheet)</title>
+  <style>
+    body { font-family: 'Pretendard', sans-serif; padding: 30px; background-color: #f8f9fa; color: #333; margin: 0; }
+    .header { margin-bottom: 30px; }
+    .header h1 { margin: 0 0 10px 0; font-size: 28px; color: #111; }
+    .header p { margin: 0; color: #666; }
+    
+    table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; margin-bottom: 40px; }
+    th, td { border: 1px solid #eaeaea; padding: 12px 15px; text-align: left; font-size: 14px; }
+    th { background-color: rgb(255,188,0); color: #fff; font-weight: 600; border-color: rgb(255,204,0); }
+    tbody tr:hover { background-color: #fefce8; }
+    
+    a { color: rgb(96,88,76); text-decoration: none; font-weight: 600; }
+    a:hover { text-decoration: underline; }
+    
+    .status { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+    .status.done { background-color: #E4F3FE; color: #438EF7; }
+    .status.ing { background-color: #fef3c7; color: #d97706; }
+    .status.wait { background-color: #f3f4f6; color: #6b7280; }
+    
+    .depth1 { font-weight: bold; background-color: #f8fafc; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>프로젝트 퍼블리싱 산출물 (Worksheet)</h1>
+    <p>작업 완료된 화면과 진행 상태를 파악하기 위한 인덱스 문서입니다.</p>
+  </div>
+
+  <table>
+    <colgroup>
+      <col style="width: 12%">
+      <col style="width: 25%">
+      <col style="width: 30%">
+      <col style="width: 10%">
+      <col style="width: 23%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>구분 (1Depth)</th>
+        <th>화면명 (2Depth)</th>
+        <th>파일 경로 (Link)</th>
+        <th>상태</th>
+        <th>비고</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 공통/가이드 -->
+      <tr>
+        <td class="depth1" rowspan="2">공통</td>
+        <td>파일 구조 및 문서 규칙</td>
+        <td><a href="src/html/convention.html" target="_blank">src/html/convention.html</a></td>
+        <td><span class="status done">완료</span></td>
+        <td>폴더 구조 및 코딩 컨벤션 안내</td>
+      </tr>
+      <tr>
+        <td>UI 컴포넌트 가이드</td>
+        <td><a href="src/html/guide.html" target="_blank">src/html/guide.html</a></td>
+        <td><span class="status done">완료</span></td>
+        <td>버튼, 뱃지, 탭 등 UI 요소 모음</td>
+      </tr>
+
+      <!-- 챌린지 영역 -->
+      <tr>
+        <td class="depth1" rowspan="5">챌린지</td>
+        <td>CMA챌린지 오늘도 행운드림</td>
+        <td><a href="src/html/challenge/cma-lucky.html" target="_blank">src/html/challenge/cma-lucky.html</a></td>
+        <td><span class="status wait">대기</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>리워드</td>
+        <td><a href="src/html/challenge/reward.html" target="_blank">src/html/challenge/reward.html</a></td>
+        <td><span class="status done">완료</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>스탁뷰 챌린지</td>
+        <td><a href="src/html/challenge/stock-view.html" target="_blank">src/html/challenge/stock-view.html</a></td>
+        <td><span class="status ing">진행중</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>오늘의 콕 챌린지</td>
+        <td><a href="src/html/challenge/today-pick.html" target="_blank">src/html/challenge/today-pick.html</a></td>
+        <td><span class="status wait">대기</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>투자사랑산악회</td>
+        <td><a href="src/html/challenge/invest-mountain.html" target="_blank">src/html/challenge/invest-mountain.html</a></td>
+        <td><span class="status wait">대기</span></td>
+        <td></td>
+      </tr>
+
+      <!-- 어드민 영역 -->
+      <tr>
+        <td class="depth1">어드민</td>
+        <td>어드민 대시보드 (예시)</td>
+        <td><a href="src/html/admin/dashboard.html" target="_blank">src/html/admin/dashboard.html</a></td>
+        <td><span class="status wait">대기</span></td>
+        <td>관리자용 화면</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

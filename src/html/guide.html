@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI 컴포넌트 스타일 가이드</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    body { background-color: #f9fafb; padding: 30px; }
+    .guide-wrapper { max-width: 1000px; margin: 0 auto;}
+    .guide-header { margin-bottom: 40px; border-bottom: 2px solid rgb(255,188,0); padding-bottom: 20px; }
+    .guide-header h1 { font-size: 32px; margin: 0 0 10px 0; color: #111; }
+    .guide-header p { color: #666; margin: 0; }
+    .guide-section { margin-bottom: 50px; }
+    .guide-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #1f2937; display: flex; align-items: center; }
+    .guide-title::before { content: ''; display: inline-block; width: 6px; height: 22px; background-color: rgb(255,188,0); margin-right: 10px; border-radius: 3px; }
+    .guide-box { padding: 20px; border: 1px dashed #d1d5db; border-radius: 8px; display: flex; gap: 15px; flex-wrap: wrap; align-items: center; }
+  </style>
+</head>
+<body>
+
+  <div class="guide-wrapper">
+    <header class="guide-header">
+      <h1>프로젝트 UI 컴포넌트 가이드</h1>
+      <p>공통으로 사용되는 UI 요소들을 모아둔 페이지입니다. (SCSS Base/Component 기준)</p>
+    </header>
+
+    <!-- 1. 버튼 가이드 -->
+    <section class="guide-section">
+      <h2 class="guide-title">1. Buttons (버튼)</h2>
+      <div class="guide-box">
+        <button type="button" class="ch-btn ch-btn--primary">Primary Button</button>
+        <button type="button" class="ch-btn ch-btn--outline">Outline Button</button>
+        <button type="button" class="ch-btn ch-btn--primary" disabled>Disabled (Primary)</button>
+        <button type="button" class="ch-btn ch-btn--outline is-disabled">Disabled (Outline)</button>
+      </div>
+    </section>
+
+    <!-- 2. 뱃지 가이드 -->
+    <section class="guide-section">
+      <h2 class="guide-title">2. Badges (상태 뱃지)</h2>
+      <div class="guide-box">
+        <span class="ch-badge ch-badge--ongoing">진행중</span>
+        <span class="ch-badge ch-badge--completed">종료</span>
+      </div>
+    </section>
+
+    <!-- 3. 탭 가이드 -->
+    <section class="guide-section">
+      <h2 class="guide-title">3. Tabs (탭 메뉴)</h2>
+      <div class="guide-box" style="display: block;">
+        <nav class="ch-tab">
+          <button type="button" class="ch-tab__item is-active">진행중인 챌린지 (Active)</button>
+          <button type="button" class="ch-tab__item">종료된 챌린지 (Default)</button>
+        </nav>
+      </div>
+    </section>
+
+    <!-- 4. 카드 가이드 -->
+    <section class="guide-section">
+      <h2 class="guide-title">4. Cards (카드)</h2>
+      <div class="guide-box" style="background-color: #f3f4f6;">
+        <article class="ch-card" style="width: 300px;">
+          <div class="ch-card__thumb"></div>
+          <div class="ch-card__content">
+            <span class="ch-badge ch-badge--ongoing">진행중</span>
+            <h2 class="ch-card__title">카드 타이틀 영역입니다.</h2>
+            <p class="ch-card__desc">카드 설명 텍스트가 노출되는 영역입니다.</p>
+            <button type="button" class="ch-btn ch-btn--primary">참여하기</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>챌린지 목록 - 퍼블리싱</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <div class="ch-challenge-layout">
+    <header class="ch-challenge-header">
+      <h1>챌린지</h1>
+    </header>
+    
+    <nav class="ch-tab">
+      <button type="button" class="ch-tab__item is-active">진행중인 챌린지</button>
+      <button type="button" class="ch-tab__item">종료된 챌린지</button>
+    </nav>
+
+    <div class="ch-challenge-list">
+      <!-- Challenge Card 1 -->
+      <article class="ch-card">
+        <img src="https://via.placeholder.com/300x160" alt="챌린지 썸네일" class="ch-card__thumb" />
+        <div class="ch-card__content">
+          <span class="ch-badge ch-badge--ongoing">진행중</span>
+          <h2 class="ch-card__title">매일 아침 6시 기상하기</h2>
+          <p class="ch-card__desc">건강한 습관을 만들어보세요.</p>
+          <button type="button" class="ch-btn ch-btn--primary">참여하기</button>
+        </div>
+      </article>
+
+      <!-- Challenge Card 2 -->
+      <article class="ch-card">
+        <img src="https://via.placeholder.com/300x160" alt="챌린지 썸네일" class="ch-card__thumb" />
+        <div class="ch-card__content">
+          <span class="ch-badge ch-badge--completed">종료</span>
+          <h2 class="ch-card__title">주 3회 런닝하기</h2>
+          <p class="ch-card__desc">체력을 기르는 러닝 챌린지</p>
+          <button type="button" class="ch-btn ch-btn--outline is-disabled" disabled>기록보기</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>

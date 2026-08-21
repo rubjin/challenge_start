@@ -1,0 +1,3 @@
+body { font-family: 'Pretendard', sans-serif; color: $ch-gray-800; line-height: 1.5; }
+.ch-a11y-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+html { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));}

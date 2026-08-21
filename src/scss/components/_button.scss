@@ -1,0 +1,16 @@
+.ch-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 20px; border-radius: $ch-radius-md; font-weight: 600;
+  transition: background-color 0.2s;
+  &--primary {
+    background-color: $ch-primary; color: $ch-gray-800;
+    &:hover { background-color: $ch-primary-hover; }
+  }
+  &--outline {
+    border: 1px solid $ch-gray-300; background-color: $ch-white; color: $ch-gray-800;
+    &:hover { background-color: $ch-gray-100; }
+  }
+  &:disabled, &.is-disabled {
+    opacity: 0.5; cursor: not-allowed; pointer-events: none;
+  }
+}

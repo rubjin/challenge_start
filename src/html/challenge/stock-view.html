@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스탁뷰 챌린지</title>
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/stock-view.css">
+</head>
+<body>
+  <div class="sv-wrapper">
+    <!-- 배경 장식용 구체들 -->
+    <div class="sv-bg-sphere sv-bg-sphere--1"></div>
+    <div class="sv-bg-sphere sv-bg-sphere--2"></div>
+    <div class="sv-bg-sphere sv-bg-sphere--3"></div>
+    <div class="sv-bg-sphere sv-bg-sphere--4"></div>
+
+    <!-- 배경 별/반짝이 효과 -->
+    <div class="sv-stars">
+      <div class="sv-star sv-star--1"></div>
+      <div class="sv-star sv-star--2"></div>
+      <div class="sv-star sv-star--3"></div>
+      <div class="sv-star sv-star--4"></div>
+      <div class="sv-star sv-star--5"></div>
+      <div class="sv-star sv-star--6"></div>
+      <div class="sv-star sv-star--7"></div>
+      <div class="sv-star sv-star--8"></div>
+    </div>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <div class="sv-scene">
+
+      <!-- 회전하는 원형 궤도 띠 -->
+      <div class="sv-orbit">
+        <div class="sv-orbit__ring"></div>
+      </div>
+
+      <!-- 중앙 토끼 캐릭터 -->
+      <div class="sv-character">
+        <!-- 실제 이미지로 교체: <img src="../../images/stock-view/rabbit.png" alt="스탁뷰 토끼" /> -->
+        <div class="sv-character__placeholder">
+          <div class="sv-character__ear sv-character__ear--left"></div>
+          <div class="sv-character__ear sv-character__ear--right"></div>
+          <div class="sv-character__body">
+            <div class="sv-character__face">
+              <div class="sv-character__eye sv-character__eye--left"></div>
+              <div class="sv-character__eye sv-character__eye--right"></div>
+              <div class="sv-character__binocular">
+                <div class="sv-character__lens sv-character__lens--left"></div>
+                <div class="sv-character__lens sv-character__lens--right"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 떠다니는 기업 로고 공들 -->
+      <div class="sv-ball sv-ball--tesla" data-company="Tesla">
+        <span class="sv-ball__logo">T</span>
+      </div>
+      <div class="sv-ball sv-ball--amazon" data-company="Amazon">
+        <span class="sv-ball__logo">a</span>
+      </div>
+      <div class="sv-ball sv-ball--google" data-company="Google">
+        <span class="sv-ball__logo">G</span>
+      </div>
+      <div class="sv-ball sv-ball--kb" data-company="KB">
+        <span class="sv-ball__logo">KB</span>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

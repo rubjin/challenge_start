@@ -1,0 +1,9 @@
+.ch-card {
+  border: 1px solid $ch-gray-300; border-radius: $ch-radius-lg; overflow: hidden; background-color: $ch-white;
+  &__thumb {
+    width: 100%; height: 160px; background-color: $ch-gray-100; object-fit: cover;
+  }
+  &__content { padding: 16px; }
+  &__title { font-size: 18px; font-weight: bold; margin-bottom: 8px; @include text-ellipsis; }
+  &__desc { font-size: 14px; color: $ch-gray-800; margin-bottom: 16px; }
+}

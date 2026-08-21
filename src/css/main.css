@@ -1,0 +1,29 @@
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+ul, ol, li { list-style: none; }
+a { text-decoration: none; color: inherit; }
+button { border: none; background: none; cursor: pointer; }
+body { font-family: 'Pretendard', sans-serif; color: #1f2937; line-height: 1.5; }
+.ch-a11y-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+.ch-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-weight: 600; transition: background-color 0.2s; }
+.ch-btn--primary { background-color: #FFDC00; color: #1f2937; }
+.ch-btn--primary:hover { background-color: #E5C600; }
+.ch-btn--outline { border: 1px solid #d1d5db; background-color: #ffffff; color: #1f2937; }
+.ch-btn--outline:hover { background-color: #f3f4f6; }
+.ch-btn:disabled, .ch-btn.is-disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+.ch-badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+.ch-badge--ongoing { background-color: #FFDC00; color: #1f2937; }
+.ch-badge--completed { background-color: #f3f4f6; color: #1f2937; }
+.ch-tab { display: flex; border-bottom: 1px solid #d1d5db; }
+.ch-tab__item { padding: 12px 24px; font-weight: 600; color: #d1d5db; position: relative; }
+.ch-tab__item.is-active { color: #1f2937; }
+.ch-tab__item.is-active::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background-color: #1f2937; }
+.ch-card { border: 1px solid #d1d5db; border-radius: 12px; overflow: hidden; background-color: #ffffff; }
+.ch-card__thumb { width: 100%; height: 160px; background-color: #f3f4f6; object-fit: cover; }
+.ch-card__content { padding: 16px; }
+.ch-card__title { font-size: 18px; font-weight: bold; margin-bottom: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ch-card__desc { font-size: 14px; color: #1f2937; margin-bottom: 16px; }
+.ch-challenge-layout { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+.ch-challenge-header { margin-bottom: 32px; }
+.ch-challenge-header h1 { font-size: 28px; font-weight: bold; }
+.ch-challenge-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-top: 24px; }
