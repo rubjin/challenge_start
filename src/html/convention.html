@@ -6,36 +6,38 @@
   <title>파일 구조 및 문서 규칙</title>
   <link rel="stylesheet" href="../css/main.css">
   <style>
-    body { background-color: #f9fafb; padding: 40px; }
-    .guide-wrapper { max-width: 1000px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-    .guide-header { margin-bottom: 40px; border-bottom: 2px solid #d9a400; padding-bottom: 20px; }
-    .guide-header h1 { font-size: 32px; margin: 0 0 10px 0; color: #111; }
-    .guide-header p { color: #666; margin: 0; line-height: 1.6; }
+    /* html 그리드 오버라이드 - PC 레이아웃 */
+    html { display: block !important; grid-template-columns: none !important; }
+    body { background-color: #f9fafb; padding: 0; margin: 0; min-width: 1200px; }
+    .guideWrapper { max-width: 1200px; margin: 40px auto; background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    .guideHeader { margin-bottom: 40px; border-bottom: 2px solid #d9a400; padding-bottom: 20px; }
+    .guideHeader h1 { font-size: 32px; margin: 0 0 10px 0; color: #111; }
+    .guideHeader p { color: #666; margin: 0; line-height: 1.6; }
     
-    .guide-section { margin-bottom: 50px; }
-    .guide-title { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #1f2937; display: flex; align-items: center; }
-    .guide-title::before { content: ''; display: inline-block; width: 6px; height: 22px; background-color: #d9a400; margin-right: 10px; border-radius: 3px; }
+    .guideSection { margin-bottom: 50px; }
+    .guideTitle { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: #1f2937; display: flex; align-items: center; }
+    .guideTitle::before { content: ''; display: inline-block; width: 6px; height: 22px; background-color: #d9a400; margin-right: 10px; border-radius: 3px; }
     
-    .rule-list { margin: 0; padding-left: 24px; color: #374151; line-height: 1.8; }
-    .rule-list li { margin-bottom: 8px; }
-    .rule-list strong { color: #111; }
+    .ruleList { margin: 0; padding-left: 24px; color: #374151; line-height: 1.8; }
+    .ruleList li { margin-bottom: 8px; }
+    .ruleList strong { color: #111; }
     
-    .code-block { background-color: #f1f5f9; padding: 20px; border-radius: 8px; font-family: 'Consolas', 'Courier New', monospace; font-size: 14px; line-height: 1.5; color: #334155; overflow-x: auto; margin-top: 10px; border: 1px solid #e2e8f0; }
+    .codeBlock { background-color: #f1f5f9; padding: 20px; border-radius: 8px; font-family: 'Consolas', 'Courier New', monospace; font-size: 14px; line-height: 1.5; color: #334155; overflow-x: auto; margin-top: 10px; border: 1px solid #e2e8f0; }
     
     code { background-color: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #d97706; font-size: 0.9em; font-family: 'Consolas', monospace; }
   </style>
 </head>
 <body>
 
-  <div class="guide-wrapper">
-    <header class="guide-header">
+  <div class="guideWrapper">
+    <header class="guideHeader">
       <h1>파일 구조 및 문서 규칙</h1>
       <p>본 문서는 챌린지 프로젝트의 퍼블리싱 작업에 대한 파일 구조, 네이밍 컨벤션, 코딩 규칙을 정의합니다.<br>개발팀이 React(JSX) 환경으로 원활하게 이관할 수 있도록 가이드하기 위해 작성되었습니다.</p>
     </header>
 
-    <section class="guide-section">
-      <h2 class="guide-title">1. 파일 구조 (Directory Structure)</h2>
-      <pre class="code-block">
+    <section class="guideSection">
+      <h2 class="guideTitle">1. 파일 구조 (Directory Structure)</h2>
+      <pre class="codeBlock">
 챌린지_start/
 ├── index.html                # 전체 퍼블리싱 산출물 목록 (Worksheet)
 └── src/
@@ -58,32 +60,32 @@
       </pre>
     </section>
 
-    <section class="guide-section">
-      <h2 class="guide-title">2. 네이밍 컨벤션 (CSS Naming Convention)</h2>
-      <ul class="rule-list">
-        <li>기존 운영 중인 프로젝트와의 스타일 충돌을 방지하기 위해 <strong>BEM (Block__Element--Modifier)</strong> 방법론에 <strong>네임스페이스(<code>ch-</code>)</strong>를 결합하여 사용합니다.</li>
-        <li><strong>Prefix (접두사):</strong> 모든 클래스명은 <code>ch-</code>로 시작합니다.</li>
-        <li><strong>Block (블록):</strong> 독립적인 의미를 가지는 컴포넌트 단위 (예: <code>.ch-btn</code>, <code>.ch-card</code>)</li>
-        <li><strong>Element (요소):</strong> 블록에 종속된 하위 요소는 <code>__</code> 로 연결 (예: <code>.ch-card__title</code>)</li>
-        <li><strong>Modifier (상태/변형):</strong> 속성이 다를 때는 <code>--</code> 로 연결 (예: <code>.ch-btn--primary</code>)</li>
-        <li><strong>State (동적 상태):</strong> JS나 React 상태로 제어되는 동적 클래스는 <code>is-</code> 접두사 사용 (예: <code>.is-active</code>)</li>
+    <section class="guideSection">
+      <h2 class="guideTitle">2. 네이밍 컨벤션 (CSS Naming Convention)</h2>
+      <ul class="ruleList">
+        <li>기존 운영 중인 프로젝트와의 스타일 충돌을 방지하기 위해 <strong>BEM (Block__Element--Modifier)</strong> 방법론에 <strong>네임스페이스(<code>(제거됨)</code>)</strong>를 결합하여 사용합니다.</li>
+        <li><strong>Prefix (접두사):</strong> 모든 클래스명은 <code>(제거됨)</code>로 시작합니다.</li>
+        <li><strong>Block (블록):</strong> 독립적인 의미를 가지는 컴포넌트 단위 (예: <code>.btn</code>, <code>.card</code>)</li>
+        <li><strong>Element (요소):</strong> 블록에 종속된 하위 요소는 <code>__</code> 로 연결 (예: <code>.cardTitle</code>)</li>
+        <li><strong>Modifier (상태/변형):</strong> 속성이 다를 때는 <code>--</code> 로 연결 (예: <code>.btnPrimary</code>)</li>
+        <li><strong>State (동적 상태):</strong> JS나 React 상태로 제어되는 동적 클래스는 <code>is-</code> 접두사 사용 (예: <code>.isActive</code>)</li>
       </ul>
     </section>
 
-    <section class="guide-section">
-      <h2 class="guide-title">3. HTML / 문서 작성 규칙</h2>
-      <ol class="rule-list">
+    <section class="guideSection">
+      <h2 class="guideTitle">3. HTML / 문서 작성 규칙</h2>
+      <ol class="ruleList">
         <li><strong>들여쓰기:</strong> Space 2칸을 표준으로 사용합니다.</li>
         <li><strong>빈 태그 닫기:</strong> <code>&lt;img /&gt;</code>, <code>&lt;input /&gt;</code>, <code>&lt;br /&gt;</code> 등은 React 환경을 고려해 반드시 슬래시로 닫습니다.</li>
         <li><strong>인라인 스타일 금지:</strong> <code>style="..."</code> 속성은 원칙적으로 배제하고 모든 디자인은 CSS로 제어합니다.</li>
         <li><strong>의미론적 마크업:</strong> <code>&lt;div&gt;</code> 남용을 줄이고 <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;article&gt;</code> 등을 적극 활용합니다.</li>
-        <li><strong>접근성(A11y):</strong> 버튼 태그에는 항상 <code>type="button"</code>을 명시하고, 스크린 리더용 텍스트는 <code>.ch-a11y-hidden</code> 클래스를 사용해 숨김 처리합니다.</li>
+        <li><strong>접근성(A11y):</strong> 버튼 태그에는 항상 <code>type="button"</code>을 명시하고, 스크린 리더용 텍스트는 <code>.a11yHidden</code> 클래스를 사용해 숨김 처리합니다.</li>
       </ol>
     </section>
 
-    <section class="guide-section">
-      <h2 class="guide-title">4. 컬러 및 테마 (Color System)</h2>
-      <ul class="rule-list">
+    <section class="guideSection">
+      <h2 class="guideTitle">4. 컬러 및 테마 (Color System)</h2>
+      <ul class="ruleList">
         <li>국민은행의 아이덴티티를 반영한 컬러 시스템을 사용합니다.</li>
         <li><strong>Primary:</strong> <code>#FFDC00</code> (KB Yellow)</li>
         <li><strong>Primary Hover:</strong> <code>#E5C600</code> (Darker Gold)</li>
@@ -91,11 +93,11 @@
       </ul>
     </section>
 
-    <section class="guide-section">
-      <h2 class="guide-title">5. React 개발팀 인수인계 시 주의사항</h2>
-      <ul class="rule-list">
+    <section class="guideSection">
+      <h2 class="guideTitle">5. React 개발팀 인수인계 시 주의사항</h2>
+      <ul class="ruleList">
         <li>퍼블리싱 결과물의 <code>class</code> 속성은 React 적용 시 모두 <code>className</code>으로 일괄 변경하여 적용해야 합니다.</li>
-        <li>탭, 아코디언 등의 인터랙션은 순수 HTML+CSS 상태 확인을 위해 <code>.is-active</code>를 수동 마크업해 두었습니다. 개발 적용 시 State 값에 따라 토글되도록 연동이 필요합니다.</li>
+        <li>탭, 아코디언 등의 인터랙션은 순수 HTML+CSS 상태 확인을 위해 <code>.isActive</code>를 수동 마크업해 두었습니다. 개발 적용 시 State 값에 따라 토글되도록 연동이 필요합니다.</li>
       </ul>
     </section>
 

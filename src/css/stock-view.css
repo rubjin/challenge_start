@@ -6,31 +6,31 @@
 /* ------- 키프레임 정의 ------- */
 
 /* 둥둥 뜨는 효과 */
-@keyframes sv-float {
+@keyframes svFloat {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-9px); }
 }
 
 /* 캐릭터 전용 둥둥 (중앙 고정 유지) */
-@keyframes sv-float-character {
+@keyframes svFloatCharacter {
   0%, 100% { transform: translate(-50%, -50%) translateY(0); }
   50% { transform: translate(-50%, -50%) translateY(-22px); }
 }
 
 /* 궤도 띠: 제자리에서 은은하게 빛나는 효과 */
-@keyframes sv-orbit-pulse {
+@keyframes svOrbitPulse {
   0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 8px rgba(255,255,255,0.3)); }
   50% { opacity: 1; filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)); }
 }
 
 /* 별 반짝이 */
-@keyframes sv-twinkle {
+@keyframes svTwinkle {
   0%, 100% { opacity: 0.2; transform: scale(0.8); }
   50% { opacity: 1; transform: scale(1.2); }
 }
 
 /* 배경 구체 떠다니기 */
-@keyframes sv-drift {
+@keyframes svDrift {
   0%, 100% { transform: translateY(0) translateX(0); }
   25% { transform: translateY(-10px) translateX(5px); }
   75% { transform: translateY(8px) translateX(-5px); }
@@ -38,7 +38,7 @@
 
 
 /* ------- 전체 배경 ------- */
-.sv-wrapper {
+.svWrapper {
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -51,40 +51,40 @@
 
 
 /* ------- 배경 장식 구체 ------- */
-.sv-bg-sphere {
+.svBgSphere {
   position: absolute;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.5), rgba(180,195,230,0.3));
   opacity: 0.5;
-  animation: sv-drift 8s ease-in-out infinite;
+  animation: svDrift 8s ease-in-out infinite;
 }
-.sv-bg-sphere--1 { width: 120px; height: 120px; top: 5%; left: -30px; animation-delay: 0s; }
-.sv-bg-sphere--2 { width: 80px; height: 80px; top: 12%; right: 8%; opacity: 0.3; animation-delay: 2s; }
-.sv-bg-sphere--3 { width: 140px; height: 140px; bottom: 10%; right: -40px; animation-delay: 4s; }
-.sv-bg-sphere--4 { width: 60px; height: 60px; bottom: 25%; left: 5%; opacity: 0.25; animation-delay: 6s; }
+.svBgSphere1 { width: 120px; height: 120px; top: 5%; left: -30px; animation-delay: 0s; }
+.svBgSphere2 { width: 80px; height: 80px; top: 12%; right: 8%; opacity: 0.3; animation-delay: 2s; }
+.svBgSphere3 { width: 140px; height: 140px; bottom: 10%; right: -40px; animation-delay: 4s; }
+.svBgSphere4 { width: 60px; height: 60px; bottom: 25%; left: 5%; opacity: 0.25; animation-delay: 6s; }
 
 
 /* ------- 별/반짝이 ------- */
-.sv-stars { position: absolute; inset: 0; pointer-events: none; }
-.sv-star {
+.svStars { position: absolute; inset: 0; pointer-events: none; }
+.svStar {
   position: absolute;
   width: 4px; height: 4px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.9);
-  animation: sv-twinkle 3s ease-in-out infinite;
+  animation: svTwinkle 3s ease-in-out infinite;
 }
-.sv-star--1 { top: 20%; left: 15%; animation-delay: 0s; }
-.sv-star--2 { top: 35%; left: 75%; animation-delay: 0.5s; }
-.sv-star--3 { top: 55%; left: 25%; animation-delay: 1s; }
-.sv-star--4 { top: 10%; left: 60%; animation-delay: 1.5s; }
-.sv-star--5 { top: 70%; left: 80%; animation-delay: 2s; }
-.sv-star--6 { top: 80%; left: 40%; animation-delay: 2.5s; }
-.sv-star--7 { top: 45%; left: 90%; animation-delay: 0.8s; }
-.sv-star--8 { top: 15%; left: 40%; animation-delay: 1.8s; width: 3px; height: 3px; }
+.svStar1 { top: 20%; left: 15%; animation-delay: 0s; }
+.svStar2 { top: 35%; left: 75%; animation-delay: 0.5s; }
+.svStar3 { top: 55%; left: 25%; animation-delay: 1s; }
+.svStar4 { top: 10%; left: 60%; animation-delay: 1.5s; }
+.svStar5 { top: 70%; left: 80%; animation-delay: 2s; }
+.svStar6 { top: 80%; left: 40%; animation-delay: 2.5s; }
+.svStar7 { top: 45%; left: 90%; animation-delay: 0.8s; }
+.svStar8 { top: 15%; left: 40%; animation-delay: 1.8s; width: 3px; height: 3px; }
 
 
 /* ------- 메인 씬 컨테이너 ------- */
-.sv-scene {
+.svScene {
   position: relative;
   width: 400px;
   height: 550px;
@@ -97,7 +97,7 @@
    - 앞면(front): 토끼 앞쪽 하단으로 지나감
    - 두 레이어가 동기화되어 하나의 띠처럼 보임
    ============================================= */
-.sv-orbit {
+.svOrbit {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -108,21 +108,21 @@
 }
 
 /* 기울기 없이 원형 그대로 유지 */
-.sv-orbit__tilt {
+.svOrbitTilt {
   width: 100%;
   height: 100%;
 }
 
 /* 이미지는 제자리 고정, 은은한 빛남 효과만 적용 */
-.sv-orbit__ring {
+.svOrbitRing {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  animation: sv-orbit-pulse 3s ease-in-out infinite;
+  animation: svOrbitPulse 3s ease-in-out infinite;
 }
 
 /* 뒷면: 토끼 뒤에서 돌아감 (z-index 낮음) */
-.sv-orbit--back {
+.svOrbitBack {
   z-index: 2;
    clip-path: inset(0 0 49% 0);
    transform: translate(-50%, -50%);
@@ -133,7 +133,7 @@
 }
 
 /* 앞면: 토끼 앞 하단으로 보임 (z-index 높음 + 상단 반 가림) */
-.sv-orbit--front {
+.svOrbitFront {
   z-index: 5;
   clip-path: inset(51% 0 0 0);
   /* left: 50%;
@@ -227,15 +227,15 @@
 
 
 /* ------- 중앙 토끼 캐릭터 ------- */
-.sv-character {
+.svCharacter {
   position: absolute;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
-  /* animation: sv-float-character 3s ease-in-out infinite; */
+  /* animation: svFloatCharacter 3s ease-in-out infinite; */
 }
-.sv-character__img {
+.svCharacterImg {
   display: block;
   width: 180px;
   height: auto;
@@ -244,12 +244,12 @@
 
 
 /* ------- 떠다니는 로고 공 ------- */
-.sv-ball {
+.svBall {
   position: absolute;
   z-index: 4;
-  animation: sv-float 3s ease-in-out infinite;
+  animation: svFloat 3s ease-in-out infinite;
 }
-.sv-ball__img {
+.svBallImg {
   display: block;
   width: 100%;
   height: 100%;
@@ -258,7 +258,7 @@
 }
 
 /* Tesla - 좌측 아래 */
-.sv-ball--tesla {
+.svBallTesla {
   width: 90px; height: 90px;
   top: 52%; left: 2%;
   animation-delay: 0s;
@@ -266,7 +266,7 @@
 }
 
 /* Amazon - 좌측 위 */
-.sv-ball--amazon {
+.svBallAmazon {
   width: 70px; height: 70px;
   top: 20%; left: 15%;
   animation-delay: 0.6s;
@@ -274,7 +274,7 @@
 }
 
 /* Google - 우측 아래 */
-.sv-ball--google {
+.svBallGoogle {
   width: 80px; height: 80px;
   top: 62%; right: 5%;
   animation-delay: 1.2s;
@@ -285,7 +285,7 @@
 /* ****************** */
 
 
-/* .rabbit-wrap {
+/* .rabbitWrap {
   position: relative;
   width: 300px;
   height: 300px;

@@ -30,7 +30,7 @@ body {
   line-height: 1.5;
 }
 
-.ch-a11y-hidden {
+.a11yHidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -44,7 +44,7 @@ html {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
-.ch-btn {
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -54,84 +54,84 @@ html {
   font-size: 14px;
   transition: background-color 0.2s;
 }
-.ch-btn--primary {
+.btnPrimary {
   background-color: #FFDC00;
   color: #1f2937;
 }
-.ch-btn--primary:hover {
+.btnPrimary:hover {
   background-color: #E5C600;
 }
-.ch-btn--outline {
+.btnOutline {
   border: 1px solid #d1d5db;
   background-color: #ffffff;
   color: #1f2937;
 }
-.ch-btn--outline:hover {
+.btnOutline:hover {
   background-color: #f3f4f6;
 }
-.ch-btn--sm {
+.btnSm {
   padding: 6px 12px;
   font-size: 12px;
   border-radius: 6px;
 }
-.ch-btn--md {
+.btnMd {
   padding: 10px 20px;
   font-size: 14px;
 }
-.ch-btn--lg {
+.btnLg {
   padding: 14px 28px;
   font-size: 16px;
   border-radius: 10px;
 }
-.ch-btn--full {
+.btnFull {
   width: 100%;
   padding: 14px 20px;
   font-size: 16px;
 }
-.ch-btn:disabled, .ch-btn.is-disabled {
+.btn:disabled, .btn.isDisabled {
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.ch-badge {
+.badge {
   display: inline-block;
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 12px;
   font-weight: bold;
 }
-.ch-badge--ongoing {
+.badgeOngoing {
   background-color: #FFDC00;
   color: #1f2937;
 }
-.ch-badge--completed {
+.badgeCompleted {
   background-color: #f3f4f6;
   color: #1f2937;
 }
-.ch-badge--sm {
+.badgeSm {
   padding: 2px 6px;
   font-size: 10px;
 }
-.ch-badge--lg {
+.badgeLg {
   padding: 6px 12px;
   font-size: 14px;
 }
 
-.ch-tab {
+.tab {
   display: flex;
   border-bottom: 1px solid #d1d5db;
 }
-.ch-tab__item {
+.tabItem {
   padding: 12px 24px;
   font-weight: 600;
   color: #d1d5db;
   position: relative;
 }
-.ch-tab__item.is-active {
+.tabItem.isActive {
   color: #1f2937;
 }
-.ch-tab__item.is-active::after {
+.tabItem.isActive::after {
   content: "";
   position: absolute;
   bottom: -1px;
@@ -141,22 +141,22 @@ html {
   background-color: #1f2937;
 }
 
-.ch-card {
+.card {
   border: 1px solid #d1d5db;
   border-radius: 12px;
   overflow: hidden;
   background-color: #ffffff;
 }
-.ch-card__thumb {
+.cardThumb {
   width: 100%;
   height: 160px;
   background-color: #f3f4f6;
   object-fit: cover;
 }
-.ch-card__content {
+.cardContent {
   padding: 16px;
 }
-.ch-card__title {
+.cardTitle {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 8px;
@@ -164,27 +164,27 @@ html {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.ch-card__desc {
+.cardDesc {
   font-size: 14px;
   color: #1f2937;
   margin-bottom: 16px;
 }
 
-.ch-challenge-layout {
+.adminLayout {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
-.ch-challenge-header {
+.adminHeader {
   margin-bottom: 32px;
 }
-.ch-challenge-header h1 {
+.adminHeader h1 {
   font-size: 28px;
   font-weight: bold;
 }
 
-.ch-challenge-list {
+.adminList {
   display: grid;
   gap: 24px;
   margin-top: 24px;

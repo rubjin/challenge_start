@@ -1,20 +1,20 @@
-.ch-btn {
+.btn {
   display: inline-flex; align-items: center; justify-content: center;
-  padding: 10px 20px; border-radius: $ch-radius-md; font-weight: 600; font-size: 14px;
+  padding: 10px 20px; border-radius: $radiusMd; font-weight: 600; font-size: 14px;
   transition: background-color 0.2s;
   &--primary {
-    background-color: $ch-primary; color: $ch-gray-800;
-    &:hover { background-color: $ch-primary-hover; }
+    background-color: $primary; color: $gray800;
+    &:hover { background-color: $primaryHover; }
   }
   &--outline {
-    border: 1px solid $ch-gray-300; background-color: $ch-white; color: $ch-gray-800;
-    &:hover { background-color: $ch-gray-100; }
+    border: 1px solid $gray300; background-color: $white; color: $gray800;
+    &:hover { background-color: $gray100; }
   }
   &--sm { padding: 6px 12px; font-size: 12px; border-radius: 6px; }
   &--md { padding: 10px 20px; font-size: 14px; }
   &--lg { padding: 14px 28px; font-size: 16px; border-radius: 10px; }
   &--full { width: 100%; padding: 14px 20px; font-size: 16px; }
-  &:disabled, &.is-disabled {
+  &:disabled, &.isDisabled {
     opacity: 0.5; cursor: not-allowed; pointer-events: none;
   }
 }
