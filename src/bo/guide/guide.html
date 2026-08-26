@@ -95,7 +95,7 @@
     }
 
     /* Full width 버튼 별도 박스 */
-    .guideBoxFullwidth { display: block; }
+    .guideBoxFullwidth { gap: 10px; }
     .guideBoxFullwidth .full { display: flex; }
   </style>
   <!-- Syntax Highlighting -->
@@ -125,6 +125,7 @@
 
       <!-- 1-1. Primary 사이즈별 -->
       <h3 class="guideSubtitle">Primary — 사이즈별</h3>
+      <!--  guideBox 내부에서 레이아웃용 껍데기(wrapper) 클래스 3개(.guideSizeGroup, .guideSizeItem, .guideSizeLabel)를 제외하고 실제 UI 컴포넌트 요소만 가져옵니다. -->
       <div class="guideBox">
         <div class="guideSizeGroup">
           <div class="guideSizeItem">
@@ -166,7 +167,6 @@
       <h3 class="guideSubtitle">Full Width (100% 너비)</h3>
       <div class="guideBox guideBoxFullwidth">
         <button type="button" class="btn primary full">Primary Full Width</button>
-        <div style="height:10px"></div>
         <button type="button" class="btn outline full">Outline Full Width</button>
       </div>
       
@@ -253,18 +253,27 @@
           if (box.nextElementSibling && box.nextElementSibling.classList.contains('guideCodeWrap')) return;
           
           var htmlCode = '';
-          // 필요한 컴포넌트(버튼, 뱃지, 탭, 카드)만 추출하여 래퍼(.guideSizeGroup 등) 제거
-          var targets = box.querySelectorAll('.btn, .badge, .tab, .card');
+          // 1. 네이티브 CSS 선택자를 이용한 탐색 
+          // guideBox 내부에서 레이아웃용 껍데기(wrapper) 클래스 3개(.guideSizeGroup, .guideSizeItem, .guideSizeLabel)를 제외하고 실제 UI 컴포넌트 요소만 가져옵니다.
+          var targets = Array.from(box.querySelectorAll('*:not(.guideSizeGroup):not(.guideSizeItem):not(.guideSizeLabel)'));
+      
           if (targets.length > 0) {
-            // 중첩된 컴포넌트(예: 카드 안의 버튼)는 최상위 카드만 출력하도록 필터링
-            var filteredTargets = Array.from(targets).filter(function(t) {
+            // 2. 중첩 방지 (최상위 컴포넌트만 추출)
+            var filteredTargets = targets.filter(function(t) {
               var parent = t.parentElement;
               while(parent && parent !== box) {
-                if (parent.matches('.btn, .badge, .tab, .card')) return false;
+                // 부모가 껍데기(wrapper) 클래스 중 하나인지 확인
+                var isWrapper = parent.matches('.guideSizeGroup, .guideSizeItem, .guideSizeLabel');
+                
+                // 부모가 껍데기가 아니라면(즉, 부모가 실제 렌더링될 타겟 컴포넌트라면)
+                // 현재 요소는 부모 안에 포함된 자식이므로 중첩 렌더링을 막기 위해 제외함
+                if (!isWrapper) return false;
+                
                 parent = parent.parentElement;
               }
               return true;
             });
+            
             htmlCode = filteredTargets.map(function(t) { return t.outerHTML; }).join('\n');
           } else {
             htmlCode = box.innerHTML;
@@ -295,8 +304,7 @@
                 '<span>코드 보기</span>' +
               '</button>' +
               '<button type="button" class="guideCodeCopy" onclick="copyCode(this)">' +
-                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M7 3.5A1.5 1.5 0 018.5 2h3.879a1.5 1.5 0 011.06.44l3.122 3.12A1.5 1.5 0 0117 6.622V12.5a1.5 1.5 0 01-1.5 1.5h-1v-3.379a3 3 0 00-.879-2.121L10.5 5.379A3 3 0 008.379 4.5H7v-1z"/><path d="M4.5 6A1.5 1.5 0 003 7.5v9A1.5 1.5 0 004.5 18h7a1.5 1.5 0 001.5-1.5v-5.879a1.5 1.5 0 00-.44-1.06L9.44 6.439A1.5 1.5 0 008.378 6H4.5z"/></svg> ' +
-                '<span>복사</span>' +
+                '<span>코드 복사</span>' +
               '</button>' +
             '</div>' +
             '<pre class="guideCodeBlock"><code class="language-html"></code></pre>';
