@@ -1,0 +1,65 @@
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+body {
+  font-family: "Pretendard", sans-serif;
+  color: #1f2937;
+  line-height: 1.5;
+}
+
+.a11yHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+html {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.challenge-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.challenge-header {
+  margin-bottom: 32px;
+}
+.challenge-header h1 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.challenge-list {
+  display: grid;
+  gap: 24px;
+  margin-top: 24px;
+}
