@@ -97,6 +97,26 @@
     /* Full width 버튼 별도 박스 */
     .guideBoxFullwidth { gap: 10px; }
     .guideBoxFullwidth .full { display: flex; }
+
+    /* 팝업 가이드 박제(상자 안에 가두기) 래퍼 */
+    .popupPreviewBox {
+      background-color: #f3f4f6;
+      border-color: transparent;
+      display: block;
+    }
+    .popupPreviewBox .popupDimmed {
+      position: relative !important;
+      display: flex !important;
+      width: 100% !important;
+      height: 400px !important;
+      z-index: 1 !important;
+      margin-bottom: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .popupPreviewBox .popupDimmed:last-child {
+      margin-bottom: 0;
+    }
   </style>
   <!-- Syntax Highlighting -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
@@ -165,14 +185,10 @@
     <section id="sectionPopups" class="guideSection">
       <h2 class="guideTitle">Popups (모달 팝업)</h2>
       
-      <!-- 팝업 띄우기 트리거 버튼 -->
-      <div style="margin-bottom: 24px; display: flex; gap: 12px;">
-        <button type="button" class="btn primary" onclick="document.getElementById('popupBasic').classList.add('isOpen')">기본 팝업 열기</button>
-        <button type="button" class="btn primary" onclick="document.getElementById('popupLarge').classList.add('isOpen')">Large 팝업 열기</button>
+      <!-- 팝업 컴포넌트를 강제로 상자 안에 가둬서 보여주는 래퍼 -->
+      <div class="guideBox popupPreviewBox">
+        <include src="./src/bo/html/components/popup.html"></include>
       </div>
-
-      <!-- 팝업 컴포넌트 호출 (기본적으로 숨겨짐) -->
-      <include src="./src/bo/html/components/popup.html"></include>
     </section>
 
     
