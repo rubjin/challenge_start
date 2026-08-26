@@ -1,0 +1,25 @@
+{
+  "name": "challenge_start",
+  "version": "1.0.0",
+  "description": "",
+  "main": "vite.config.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubjin/challenge_start.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rubjin/challenge_start/issues"
+  },
+  "homepage": "https://github.com/rubjin/challenge_start#readme",
+  "devDependencies": {
+    "vite": "^8.2.2"
+  }
+}

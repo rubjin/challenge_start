@@ -122,104 +122,24 @@
     <!-- ==================== 1. 버튼 가이드 ==================== -->
     <section id="sectionButtons" class="guideSection">
       <h2 class="guideTitle">1. Buttons (버튼)</h2>
-
-      <!-- 1-1. Primary 사이즈별 -->
-      <h3 class="guideSubtitle">Primary — 사이즈별</h3>
-      <!--  guideBox 내부에서 레이아웃용 껍데기(wrapper) 클래스 3개(.guideSizeGroup, .guideSizeItem, .guideSizeLabel)를 제외하고 실제 UI 컴포넌트 요소만 가져옵니다. -->
-      <div class="guideBox">
-        <div class="guideSizeGroup">
-          <div class="guideSizeItem">
-            <span class="guideSizeLabel">Small</span>
-            <button type="button" class="btn primary sm">Primary SM</button>
-          </div>
-          <div class="guideSizeItem">
-            <span class="guideSizeLabel">Medium (기본)</span>
-            <button type="button" class="btn primary md">Primary MD</button>
-          </div>
-          <div class="guideSizeItem">
-            <span class="guideSizeLabel">Large</span>
-            <button type="button" class="btn primary lg">Primary LG</button>
-          </div>
-        </div>
+      <div class="guideBox" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <include src="./src/bo/html/components/button.html"></include>
       </div>
-
-      <!-- 1-2. Outline 사이즈별 -->
-      <h3 class="guideSubtitle">Outline — 사이즈별</h3>
-      <div class="guideBox">
-        <div class="guideSizeGroup">
-          <div class="guideSizeItem">
-            <span class="guideSizeLabel">Small</span>
-            <button type="button" class="btn outline sm">Outline SM</button>
-          </div>
-          <div class="guideSizeItem">
-            <span class="guideSizeLabel">Medium (기본)</span>
-            <button type="button" class="btn outline md">Outline MD</button>
-          </div>
-          <div class="guideSizeItem">
-            <span class="guideSizeLabel">Large</span>
-            <button type="button" class="btn outline lg">Outline LG</button>
-          </div>
-        </div>
-      </div>
-      
-
-      <!-- 1-3. Full Width -->
-      <h3 class="guideSubtitle">Full Width (100% 너비)</h3>
-      <div class="guideBox guideBoxFullwidth">
-        <button type="button" class="btn primary full">Primary Full Width</button>
-        <button type="button" class="btn outline full">Outline Full Width</button>
-      </div>
-      
-
-      <!-- 1-4. Disabled 상태 -->
-      <h3 class="guideSubtitle">Disabled 상태</h3>
-      <div class="guideBox">
-        <button type="button" class="btn primary" disabled>Disabled (Primary)</button>
-        <button type="button" class="btn outline isDisabled">Disabled (Outline)</button>
-      </div>
-      
     </section>
 
     <!-- ==================== 2. 뱃지 가이드 ==================== -->
     <section id="sectionBadges" class="guideSection">
       <h2 class="guideTitle">2. Badges (상태 뱃지)</h2>
-
-      <!-- 2-1. 상태별 -->
-      <h3 class="guideSubtitle">상태별</h3>
-      <div class="guideBox">
-        <span class="badge ongoing">진행중</span>
-        <span class="badge completed">종료</span>
+      <div class="guideBox" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <include src="./src/bo/html/components/badge.html"></include>
       </div>
-
-      <!-- 2-2. 사이즈별 -->
-      <h3 class="guideSubtitle">사이즈별</h3>
-      <div class="guideBox">
-        <div class="guideSizeGroup">
-          <div class="guideSizeItem">
-            <span class="guideSizeLabel">Small</span>
-            <span class="badge ongoing sm">진행중 SM</span>
-          </div>
-          <div class="guideSizeItem">
-            <span class="guideSizeLabel">Default</span>
-            <span class="badge ongoing">진행중</span>
-          </div>
-          <div class="guideSizeItem">
-            <span class="guideSizeLabel">Large</span>
-            <span class="badge ongoing lg">진행중 LG</span>
-          </div>
-        </div>
-      </div>
-      
     </section>
 
     <!-- ==================== 3. 탭 가이드 ==================== -->
     <section id="sectionTabs" class="guideSection">
       <h2 class="guideTitle">3. Tabs (탭 메뉴)</h2>
       <div class="guideBox guideBoxBlock">
-        <nav class="tab">
-          <button type="button" class="item isActive">진행중인 챌린지 (Active)</button>
-          <button type="button" class="item">종료된 챌린지 (Default)</button>
-        </nav>
+        <include src="./src/bo/html/components/tab.html"></include>
       </div>
     </section>
 
@@ -227,15 +147,7 @@
     <section id="sectionCards" class="guideSection">
       <h2 class="guideTitle">4. Cards (카드)</h2>
       <div class="guideBox" style="background-color: #f3f4f6;">
-        <article class="card" style="width: 300px;">
-          <div class="thumb"></div>
-          <div class="content">
-            <span class="badge ongoing">진행중</span>
-            <h2 class="title">카드 타이틀 영역입니다.</h2>
-            <p class="desc">카드 설명 텍스트가 노출되는 영역입니다.</p>
-            <button type="button" class="btn primary">참여하기</button>
-          </div>
-        </article>
+        <include src="./src/bo/html/components/card.html"></include>
       </div>
     </section>
 
