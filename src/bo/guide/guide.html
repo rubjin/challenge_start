@@ -110,7 +110,9 @@
       <button type="button" class="guideNavItem" data-target="sectionBadges">Badges</button>
       <button type="button" class="guideNavItem" data-target="sectionTabs">Tabs</button>
       <button type="button" class="guideNavItem" data-target="sectionCards">Cards</button>
-      </div>
+      <button type="button" class="guideNavItem" data-target="sectionForms">Forms</button>
+      <button type="button" class="guideNavItem" data-target="sectionPopups">Popups</button>
+    </div>
   </nav>
 
   <div class="guideWrapper">
@@ -121,7 +123,7 @@
 
     <!-- ==================== 1. 버튼 가이드 ==================== -->
     <section id="sectionButtons" class="guideSection">
-      <h2 class="guideTitle">1. Buttons (버튼)</h2>
+      <h2 class="guideTitle">Buttons (버튼)</h2>
       <div class="guideBox" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
         <include src="./src/bo/html/components/button.html"></include>
       </div>
@@ -129,7 +131,7 @@
 
     <!-- ==================== 2. 뱃지 가이드 ==================== -->
     <section id="sectionBadges" class="guideSection">
-      <h2 class="guideTitle">2. Badges (상태 뱃지)</h2>
+      <h2 class="guideTitle">Badges (상태 뱃지)</h2>
       <div class="guideBox" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
         <include src="./src/bo/html/components/badge.html"></include>
       </div>
@@ -137,7 +139,7 @@
 
     <!-- ==================== 3. 탭 가이드 ==================== -->
     <section id="sectionTabs" class="guideSection">
-      <h2 class="guideTitle">3. Tabs (탭 메뉴)</h2>
+      <h2 class="guideTitle">Tabs (탭 메뉴)</h2>
       <div class="guideBox guideBoxBlock">
         <include src="./src/bo/html/components/tab.html"></include>
       </div>
@@ -145,10 +147,32 @@
 
     <!-- ==================== 4. 카드 가이드 ==================== -->
     <section id="sectionCards" class="guideSection">
-      <h2 class="guideTitle">4. Cards (카드)</h2>
+      <h2 class="guideTitle">Cards (카드)</h2>
       <div class="guideBox" style="background-color: #f3f4f6;">
         <include src="./src/bo/html/components/card.html"></include>
       </div>
+    </section>
+
+    <!-- ==================== 5. 폼 가이드 ==================== -->
+    <section id="sectionForms" class="guideSection">
+      <h2 class="guideTitle">Forms (입력 폼)</h2>
+      <div class="guideBox guideBoxBlock" style="max-width: 600px;">
+        <include src="./src/bo/html/components/form.html"></include>
+      </div>
+    </section>
+
+    <!-- ==================== 6. 팝업 가이드 ==================== -->
+    <section id="sectionPopups" class="guideSection">
+      <h2 class="guideTitle">Popups (모달 팝업)</h2>
+      
+      <!-- 팝업 띄우기 트리거 버튼 -->
+      <div style="margin-bottom: 24px; display: flex; gap: 12px;">
+        <button type="button" class="btn primary" onclick="document.getElementById('popupBasic').classList.add('isOpen')">기본 팝업 열기</button>
+        <button type="button" class="btn primary" onclick="document.getElementById('popupLarge').classList.add('isOpen')">Large 팝업 열기</button>
+      </div>
+
+      <!-- 팝업 컴포넌트 호출 (기본적으로 숨겨짐) -->
+      <include src="./src/bo/html/components/popup.html"></include>
     </section>
 
     
@@ -268,33 +292,34 @@
         });
       }
   
-      // 스티키 네비게이션 클릭 -> 스크롤
+      // 스티키 네비게이션 클릭 -> 컨텐츠 교체 (스크롤 대신 탭 방식)
       document.querySelectorAll('.guideNavItem').forEach(function(navItem) {
         navItem.addEventListener('click', function() {
+          // 1. 탭 버튼 활성화 변경
           document.querySelectorAll('.guideNavItem').forEach(function(item) {
             item.classList.remove('isActive');
           });
           this.classList.add('isActive');
+
+          // 2. 타겟 컨텐츠만 보여주고 나머지는 숨김
           var targetId = this.getAttribute('data-target');
+          document.querySelectorAll('.guideSection').forEach(function(section) {
+            section.style.display = 'none';
+          });
           var targetSection = document.getElementById(targetId);
           if (targetSection) {
-            targetSection.scrollIntoView({ behavior: 'smooth' });
+            targetSection.style.display = 'block';
           }
         });
       });
   
-      // 스크롤 시 네비게이션 활성 상태 업데이트
-      window.addEventListener('scroll', function() {
-        var sections = document.querySelectorAll('.guideSection');
-        var navItems = document.querySelectorAll('.guideNavItem');
-        var scrollPos = window.scrollY + 80;
-  
-        sections.forEach(function(section, index) {
-          var top = section.offsetTop;
-          var bottom = top + section.offsetHeight;
-          if (scrollPos >= top && scrollPos < bottom) {
-            navItems.forEach(function(item) { item.classList.remove('isActive'); });
-            navItems[index].classList.add('isActive');
+      // 초기 렌더링 시: 첫 번째 섹션만 보이게 하고 나머지 숨김 처리
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.guideSection').forEach(function(section, index) {
+          if (index !== 0) {
+            section.style.display = 'none';
+          } else {
+            section.style.display = 'block';
           }
         });
       });

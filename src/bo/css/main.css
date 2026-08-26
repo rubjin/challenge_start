@@ -172,3 +172,60 @@ html {
   height: 2px;
   background-color: #1f2937;
 }
+
+/* ==========================================================================
+   Form Component
+   ========================================================================== */
+.formGroup { margin-bottom: 24px; width: 100%; }
+.formGroup:last-child { margin-bottom: 0; }
+.formLabel { display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 8px; }
+.formLabel .required { color: #ef4444; margin-left: 4px; }
+.formControlWrap { position: relative; width: 100%; }
+.formControlWrap.hasBtn { display: flex; gap: 8px; align-items: center; }
+.formControlWrap.hasBtn .formControl { flex: 1; }
+.formControlWrap.hasBtn .btn { flex-shrink: 0; height: 48px; margin: 0; }
+.formControl { width: 100%; height: 48px; padding: 0 16px; font-size: 15px; color: #111827; background-color: #fff; border: 1px solid #d1d5db; border-radius: 6px; outline: none; transition: all 0.2s ease-in-out; box-sizing: border-box; }
+.formControl::placeholder { color: #9ca3af; }
+.formControl:hover { border-color: #9ca3af; }
+.formControl:focus { border-color: #FFDC00; box-shadow: 0 0 0 3px rgba(255, 220, 0, 0.2); }
+.formControl:disabled, .formControl.isDisabled { background-color: #f3f4f6; color: #9ca3af; border-color: #e5e7eb; cursor: not-allowed; }
+.formControl.isError { border-color: #ef4444; }
+.formControl.isError:focus { box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2); }
+
+textarea.formControl { height: auto; min-height: 120px; padding: 12px 16px; resize: vertical; }
+select.formControl { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E"); background-position: right 12px center; background-repeat: no-repeat; background-size: 20px 20px; padding-right: 40px; }
+.formErrorMsg { display: block; font-size: 13px; color: #ef4444; margin-top: 6px; }
+
+.formCheckGroup { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.formCheck { display: inline-flex; align-items: center; cursor: pointer; position: relative; user-select: none; }
+.formCheck input[type="checkbox"], .formCheck input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+.formCheck .checkIcon { width: 20px; height: 20px; border: 1px solid #d1d5db; background-color: #fff; display: flex; align-items: center; justify-content: center; margin-right: 8px; transition: all 0.2s; }
+.formCheck .checkIcon::after { content: ''; display: none; }
+.formCheck input[type="checkbox"] + .checkIcon { border-radius: 4px; }
+.formCheck input[type="checkbox"] + .checkIcon::after { width: 10px; height: 10px; background-color: #fff; clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); }
+.formCheck input[type="radio"] + .checkIcon { border-radius: 50%; }
+.formCheck input[type="radio"] + .checkIcon::after { width: 10px; height: 10px; border-radius: 50%; background-color: #fff; }
+.formCheck input:checked + .checkIcon { background-color: #1f2937; border-color: #1f2937; }
+.formCheck input:checked + .checkIcon::after { display: block; }
+.formCheck input:disabled + .checkIcon { background-color: #f3f4f6; border-color: #e5e7eb; cursor: not-allowed; }
+.formCheck input:checked:disabled + .checkIcon { background-color: #d1d5db; border-color: #d1d5db; }
+.formCheck .checkLabel { font-size: 15px; color: #374151; }
+.formCheck input:disabled ~ .checkLabel { color: #9ca3af; cursor: not-allowed; }
+
+/* ==========================================================================
+   Popup Component
+   ========================================================================== */
+.popupDimmed { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.6); z-index: 1000; align-items: center; justify-content: center; }
+.popupDimmed.isOpen { display: flex; }
+.popupWrap { position: relative; width: 400px; max-width: 90vw; background-color: #fff; border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); overflow: hidden; z-index: 1001; display: flex; flex-direction: column; }
+.popupWrap.lg { width: 600px; }
+.popupWrap.sm { width: 320px; }
+.popupHeader { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid #e5e7eb; }
+.popupHeader .popupTitle { font-size: 18px; font-weight: 700; color: #111827; margin: 0; }
+.popupHeader .btnClose { width: 24px; height: 24px; background: transparent; border: none; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; color: #9ca3af; transition: color 0.2s; position: relative; }
+.popupHeader .btnClose:hover { color: #111827; }
+.popupHeader .btnClose::before, .popupHeader .btnClose::after { content: ''; position: absolute; width: 14px; height: 2px; background-color: currentColor; }
+.popupHeader .btnClose::before { transform: rotate(45deg); }
+.popupHeader .btnClose::after { transform: rotate(-45deg); }
+.popupBody { padding: 24px; font-size: 15px; line-height: 1.6; color: #4b5563; max-height: 60vh; overflow-y: auto; }
+.popupFooter { padding: 20px 24px; background-color: #f9fafb; border-top: 1px solid #e5e7eb; display: flex; justify-content: flex-end; gap: 12px; }
